@@ -11,7 +11,7 @@ Vitor Morini
 
 ## Azure Functions
 
-O projeto possui duas Azure Functions:
+O projeto possui duas funções:
 
 ### HTTP Function
 
