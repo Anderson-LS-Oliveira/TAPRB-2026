@@ -1,4 +1,5 @@
 import logging
+import os
 import urllib.request
 import urllib.parse
 
@@ -18,10 +19,15 @@ def TimerChamadaHttp(timer: func.TimerRequest) -> None:
     logging.info("Timer Trigger executado.")
 
     parametros = urllib.parse.urlencode({
-        "nome": "Anderson"
+        "nome": "Teste"
     })
 
-    url = f"http://localhost:7071/api/receber?{parametros}"
+    url_base = os.environ.get(
+        "HTTP_FUNCTION_URL",
+        "http://localhost:7071/api/receber"
+    )
+
+    url = f"{url_base}?{parametros}"
 
     try:
         with urllib.request.urlopen(url, timeout=10) as resposta:
